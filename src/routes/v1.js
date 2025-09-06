@@ -648,6 +648,7 @@ router.post('/chat/completions', async (req, res) => {
             );
             
             res.write('data: [DONE]\n\n');
+            res.end(); // 尝试修复错误后流式响应不会结束的bug
             responseEnded = true; // 标记响应已结束
             break; // 跳出循环，不再处理后续数据
           }
